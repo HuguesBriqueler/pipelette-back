@@ -1,5 +1,7 @@
-CREATE DATABASE pipelette;
-use pipelette;
+CREATE DATABASE IF NOT EXISTS pipelette;
+
+USE pipelette;
+
 CREATE TABLE `user` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `firstname` VARCHAR(100) NOT NULL,
@@ -21,7 +23,7 @@ CREATE TABLE `capsule` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `audio_file` VARCHAR(255) NOT NULL,
     `audio_url` VARCHAR(255) NOT NULL,
-    `location` VARCHAR(255) NOT NULL
+    `location` VARCHAR(255) NOT NULL,
     `date_record` DATETIME NOT NULL,
     `audio_title` VARCHAR(100) NOT NULL,
     `receiver_firstname` VARCHAR(255) NOT NULL,
