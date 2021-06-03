@@ -9,7 +9,7 @@ CREATE TABLE `user` (
     `created_at` DATETIME NOT NULL,
     `mail` VARCHAR(100) NOT NULL,
     `phone` VARCHAR(25) NULL,
-    `password` BINARY(64) NOT NULL,
+    `password` VARCHAR(256) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
