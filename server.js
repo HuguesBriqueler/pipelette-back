@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Express");
 });
 
-app.post("/create", (req,res) => {
+app.post("/capsules", (req,res) => {
   const { audio_path, audio_title } = req.body;
   connection.query(
     'INSERT INTO capsule(audio_path, audio_title) VALUES (?, ?)',
