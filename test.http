@@ -1,0 +1,7 @@
+POST http://localhost:3000/create
+Content-Type: application/json
+
+{
+    "audio_path": "mp3",
+    "audio_title": "anniversaire"
+}
