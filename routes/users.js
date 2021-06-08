@@ -1,4 +1,5 @@
 const db = require("../db-config");
+const argon2 = require('argon2');
 
 const userRoutes = require('express').Router();
 
@@ -19,6 +20,9 @@ userRoutes.post('/', async (req, res) => {
     email: req.body.email,
     password: req.body.password,
   };
+
+  user.password = await argon2.hash(user.password);
+
   db.query('INSERT INTO user (firstname, lastname, mail, phone, password) VALUES (?, ?, ?, ?, ?)', ["Hugo", "Boss", user.email, "0326458794", user.password], (err, results) => {
     if (err) {
       console.log(err);
