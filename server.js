@@ -16,9 +16,9 @@ connection.connect((err) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Express");
-});
+// add routes
+const routes = require('./routes');
+app.use(routes);
 
 app.get("/capsules", (req, res) => {
   res.send("Welcome to the Capsules page")
@@ -50,8 +50,6 @@ app.post("/capsules", (req,res) => {
     }
   );
 });
-
-
 
 app.listen(port, (err) => {
   if (err) {
