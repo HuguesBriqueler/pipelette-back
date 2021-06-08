@@ -16,9 +16,9 @@ connection.connect((err) => {
   }
 });
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Express");
-});
+// add routes
+const routes = require('./routes');
+app.use(routes);
 
 app.post("/capsules", (req,res) => {
   const { audio_path, audio_title } = req.body;
@@ -46,6 +46,10 @@ app.post("/capsules", (req,res) => {
     }
   );
 });
+
+app.post("/user", (req, res)=> {
+
+})
 
 
 
