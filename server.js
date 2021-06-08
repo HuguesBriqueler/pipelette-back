@@ -47,12 +47,6 @@ app.post("/capsules", (req,res) => {
   );
 });
 
-app.post("/user", (req, res)=> {
-
-})
-
-
-
 app.listen(port, (err) => {
   if (err) {
     console.error("Something bad happened");
