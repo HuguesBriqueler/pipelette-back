@@ -20,6 +20,10 @@ app.get("/", (req, res) => {
   res.send("Welcome to Express");
 });
 
+app.get("/capsules", (req, res) => {
+  res.send("Welcome to the Capsules page")
+})
+
 app.post("/capsules", (req,res) => {
   const { audio_path, audio_title } = req.body;
   connection.query(

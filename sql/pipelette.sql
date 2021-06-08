@@ -1,6 +1,6 @@
-DROP DATABASE pipelette;
+DROP DATABASE IF EXISTS pipelette;
 CREATE DATABASE pipelette;
-use pipelette;
+USE pipelette;
 
 CREATE TABLE `user` (
     `id` INT NOT NULL AUTO_INCREMENT,
@@ -21,7 +21,6 @@ CREATE TABLE `playlist` (
 
 CREATE TABLE `capsule` (
     `id` INT NOT NULL AUTO_INCREMENT,
-
     `audio_path` VARCHAR(255) NOT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `audio_title` VARCHAR(100) NOT NULL,
