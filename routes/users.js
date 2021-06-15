@@ -15,7 +15,12 @@ userRoutes.get('/', (req, res) => {
   })
 });
 
-userRoutes.post('/', async (req, res) => {
+const validateInput = (req, res, next) => {
+  // todo validate the inputs in req.body
+  next();
+}
+
+userRoutes.post('/', validateInput, async (req, res) => {
   const user = {
     email: req.body.email,
     password: req.body.password,
