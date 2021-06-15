@@ -1,7 +1,22 @@
-POST http://localhost:3000/capsules
+GET http://localhost:5000/capsules
+
+###
+POST http://localhost:5000/capsules
 Content-Type: application/json
 
 {
     "audio_path": "mp3",
     "audio_title": "anniversaire"
+}
+
+###
+GET http://localhost:5000/users
+
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "email": "aa@gmail.com",
+    "password": "123456"
 }
