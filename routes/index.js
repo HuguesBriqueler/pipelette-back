@@ -9,4 +9,7 @@ routes.get('/', (req, res) => {
 const userRoutes = require('./users');
 routes.use('/users', userRoutes);
 
+const capsuleRoutes = require('./capsules');
+routes.use('/capsules', capsuleRoutes);
+
 module.exports = routes;

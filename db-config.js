@@ -9,4 +9,14 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
+connection.connect((err) => {
+  if (err) {
+    console.error(`error connecting: ${err.stack}`);
+  } else {
+    console.log(
+      `connected to database with threadId :  ${connection.threadId}`
+    );
+  }
+});
+
 module.exports = connection;
