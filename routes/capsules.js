@@ -21,10 +21,15 @@ capsuleRoutes.get("/:id", (req, res) => {
       console.log(err);
       res.status(500);
     }
-    else {
-      res.status(200).json(results);
+    else
+      if (results[0]) {
+        res.status(200).json(results[0]);
+      }
+      else {
+        res.status(404).send('Not found');
+      }
     }
-  })
+  )
 });
 
 capsuleRoutes.post("/", (req,res) => {
