@@ -20,3 +20,7 @@ Content-Type: application/json
     "email": "aa@gmail.com",
     "password": "123456"
 }
+
+###
+DELETE http://localhost:5000/capsules/6
+Content-Type: application/json
