@@ -5,7 +5,7 @@ USE pipelette;
 CREATE TABLE `user` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    `mail` VARCHAR(100) NOT NULL,
+    `email` VARCHAR(100) NOT NULL,
     `password` VARCHAR(256) NOT NULL,
     PRIMARY KEY (`id`)
 );
