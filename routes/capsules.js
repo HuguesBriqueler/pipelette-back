@@ -61,7 +61,7 @@ capsuleRoutes.delete("/:id", (req, res) => {
       console.log(err);
       res.status(500).send("Error deleting an capsule");
     } else {
-      res.status(200).send("Capsule deleted!");
+      res.status(204).send("Capsule deleted!");
     }
   });
 });
