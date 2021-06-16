@@ -4,9 +4,10 @@ const userRoutes = require('express').Router();
 const { validateInput } = require('../middleware/auth.js');
 const { hashPassword } = require('../middleware/auth.js');
 const { verifyPassword } = require('../middleware/auth.js');
+const { authentificationToken } = require('../middleware/auth.js');
 
-
-userRoutes.get('/', (req, res) => {
+// TEST
+userRoutes.get('/', authentificationToken, (req, res) => {
   db.query('SELECT * from user', (err, results) => {
     if (err) {
       console.log(err);
@@ -18,7 +19,7 @@ userRoutes.get('/', (req, res) => {
   })
 });
 
-
+// REGISTER
 userRoutes.post('/', validateInput, hashPassword, (req, res) => {
   const user = {
     email: req.body.email,
@@ -37,20 +38,23 @@ userRoutes.post('/', validateInput, hashPassword, (req, res) => {
   })
 });
 
+
+// LOGIN
 userRoutes.post('/login', (req, res, next) => {
   console.log('Welcome on users/login route')
   const user = {
     email: req.body.email,
   };
 
-  db.query('SELECT password FROM user WHERE email = ?', [user.email], (err, results) => {
+  db.query('SELECT id, password FROM user WHERE email = ?', [user.email], (err, results) => {
     if(err) {
       res.sendStatus(500);
       console.log(err);
     } 
     else if(results.length === 1) {
       req.db = {
-        password: results[0].password
+        id: results[0].id,
+        password: results[0].password,
       };
       next();
     } 

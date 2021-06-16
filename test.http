@@ -11,6 +11,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTYyMzg1MTM2NH0.UIHturC6yyCTSJJP3srYbdKIhLw7zAn9i_zysCi7C1I
 
 ###
 POST http://localhost:5000/users
@@ -38,4 +39,14 @@ Content-Type: application/json
 {
     "email": "jean@gmail.com",
     "password": "1234"
+}
+
+###
+
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "email": "ok@gmail.com",
+    "password": "12345"
 }
