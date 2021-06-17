@@ -27,7 +27,7 @@ const verifyPassword = async (req, res, next) => {
   }
 }
 
-const authentificationToken = (req, res, next) => {
+const authenticationToken = (req, res, next) => {
   const authorization = req.get('Authorization');
   if(authorization == null) {
       res.sendStatus(401)
@@ -36,7 +36,7 @@ const authentificationToken = (req, res, next) => {
     const token = authorization.split(' ')[1];
     try {
         const decoded = jwt.verify(token, process.env.SECRET_TOKEN);
-        req.payload = decoded;
+        req.tokenpPayload = decoded;
         console.log('Access authorized');
         next();
     }
@@ -52,5 +52,5 @@ const authentificationToken = (req, res, next) => {
       hashPassword,
       validateInput,
       verifyPassword,
-      authentificationToken,
+      authenticationToken,
     }

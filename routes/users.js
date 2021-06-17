@@ -1,13 +1,16 @@
 const db = require("../db-config");
 const argon2 = require('argon2');
 const userRoutes = require('express').Router();
-const { validateInput } = require('../middleware/auth.js');
-const { hashPassword } = require('../middleware/auth.js');
-const { verifyPassword } = require('../middleware/auth.js');
-const { authentificationToken } = require('../middleware/auth.js');
+const {
+  validateInput,
+  hashPassword,
+  verifyPassword,
+  authenticationToken
+} = require('../middleware/auth.js');
+
 
 // TEST
-userRoutes.get('/', authentificationToken, (req, res) => {
+userRoutes.get('/', authenticationToken, (req, res) => {
   db.query('SELECT * from user', (err, results) => {
     if (err) {
       console.log(err);
