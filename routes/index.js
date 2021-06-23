@@ -1,3 +1,4 @@
+const express = require('express');
 const routes = require('express').Router();
 
 // define the index route
@@ -11,5 +12,9 @@ routes.use('/users', userRoutes);
 
 const capsuleRoutes = require('./capsules');
 routes.use('/capsules', capsuleRoutes);
+
+const uploadRoutes = require('./upload');
+routes.use('/upload', uploadRoutes);
+routes.use('/uploads', express.static('uploads'));
 
 module.exports = routes;
