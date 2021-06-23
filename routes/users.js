@@ -80,7 +80,7 @@ userRoutes.delete("/:id", (req, res) => {
       console.log(err);
       res.status(500).send("Error deleting an user");
     } else {
-      res.status(200).send("User deleted!");
+      res.status(204).send("User deleted!");
     }
   });
 });
@@ -92,7 +92,7 @@ userRoutes.delete("/", (req, res) => {
       console.log(err);
       res.status(500).send("Error deleting all users");
     } else {
-      res.status(200).send("Users deleted!");
+      res.status(204).send("Users deleted!");
     }
   });
 });
