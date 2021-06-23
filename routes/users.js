@@ -80,7 +80,7 @@ userRoutes.delete("/:id", (req, res) => {
       console.log(err);
       res.status(500).send("Error deleting an user");
     } else {
-      res.status(200).send("User deleted!");
+      res.status(204).send("User deleted!");
     }
   });
 });
@@ -92,9 +92,26 @@ userRoutes.delete("/", (req, res) => {
       console.log(err);
       res.status(500).send("Error deleting all users");
     } else {
-      res.status(200).send("Users deleted!");
+      res.status(204).send("Users deleted!");
     }
   });
+});
+
+userRoutes.put("/:id", (req, res) => {
+  const userId = req.params.id;
+  const email = req.body.email;
+  db.query(
+    "UPDATE user SET email = ? WHERE id = ?",
+    [email, userId],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error updated email");
+      } else {
+        res.status(204).send("Email updated!");
+      }
+    }
+  );
 });
 
 module.exports = userRoutes;
