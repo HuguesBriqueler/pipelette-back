@@ -13,9 +13,9 @@ CREATE TABLE `user` (
 CREATE TABLE `playlist` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `title` VARCHAR(255) NOT NULL,
-    `UserId` INT NOT NULL,
+    `user_id` INT NOT NULL,
     PRIMARY KEY (`id`),
-    CONSTRAINT `FK_PlaylistOwner` FOREIGN KEY (`UserId`) REFERENCES user(id)
+    CONSTRAINT `fk_playlist_owner` FOREIGN KEY (`user_id`) REFERENCES user(id)
 );
 
 CREATE TABLE `capsule` (
@@ -23,16 +23,16 @@ CREATE TABLE `capsule` (
     `audio_path` VARCHAR(255) NOT NULL,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     `audio_title` VARCHAR(100) NOT NULL,
-    `UserId` INT NOT NULL,
+    `user_id` INT NOT NULL,
     PRIMARY KEY (`id`),
-    CONSTRAINT FK_CapsuleOwner FOREIGN KEY (UserId) REFERENCES user(id)
+    CONSTRAINT fk_capsule_Owner FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE playlistCapsule (
     id INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (id),
-    PlaylistId INT NOT NULL,
-    CapsuleId INT NOT NULL,
-    CONSTRAINT FK_PlaylistId FOREIGN KEY (PlaylistId) REFERENCES playlist(id),
-    CONSTRAINT FK_CapsuleId FOREIGN KEY (CapsuleId) REFERENCES capsule(id)
+    playlist_id INT NOT NULL,
+    capsule_id INT NOT NULL,
+    CONSTRAINT fk_playlist_id FOREIGN KEY (playlist_id) REFERENCES playlist(id),
+    CONSTRAINT fk_capsule_id FOREIGN KEY (capsule_id) REFERENCES capsule(id)
 )
