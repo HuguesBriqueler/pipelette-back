@@ -65,7 +65,7 @@ capsuleRoutes.delete("/:id", (req, res) => {
       console.log(err);
       res.status(500).send("Error deleting an capsule");
     } else {
-      res.status(200).send("Capsule deleted!");
+      res.status(204).send("Capsule deleted!");
     }
   });
 });
@@ -77,9 +77,27 @@ capsuleRoutes.delete("/", (req, res) => {
       console.log(err);
       res.status(500).send("Error deleting all capsules");
     } else {
-      res.status(200).send("Capsules deleted!");
+      res.status(204).send("Capsules deleted!");
     }
   });
+});
+
+capsuleRoutes.put("/:id", (req, res) => {
+  const capsuleId = req.params.id;
+  const audio_path = req.body.audio_path;
+  const audio_title = req.body.audio_title;
+  db.query(
+    "UPDATE capsule SET audio_path = ?, audio_title = ? WHERE id = ?",
+    [audio_path, audio_title, capsuleId],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error updated capsule");
+      } else {
+        res.status(204).send("Capsule updated!");
+      }
+    }
+  );
 });
 
 module.exports = capsuleRoutes;
