@@ -97,4 +97,21 @@ userRoutes.delete("/", (req, res) => {
   });
 });
 
+userRoutes.put("/:id", (req, res) => {
+  const userId = req.params.id;
+  const email = req.body.email;
+  db.query(
+    "UPDATE user SET email = ? WHERE id = ?",
+    [email, userId],
+    (err, results) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send("Error updated email");
+      } else {
+        res.status(204).send("Email updated!");
+      }
+    }
+  );
+});
+
 module.exports = userRoutes;
