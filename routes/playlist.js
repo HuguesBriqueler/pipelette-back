@@ -41,4 +41,17 @@ playlistRoutes.post("/", (req, res) => {
   );
 });
 
+// TEST DELETE
+playlistRoutes.delete("/:id", (req, res) => {
+  const playlistId = req.params.id;
+  db.query("DELETE FROM playlist WHERE id = ?", [playlistId], (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500).send("Error deleting an playlist");
+    } else {
+      res.status(204).send("playlist deleted !");
+    }
+  });
+});
+
 module.exports = playlistRoutes;

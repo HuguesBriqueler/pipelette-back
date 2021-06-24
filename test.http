@@ -1,5 +1,60 @@
-GET http://localhost:5000/capsules
+# USERS ROUTES
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTYyMzg1MTM2NH0.UIHturC6yyCTSJJP3srYbdKIhLw7zAn9i_zysCi7C1I
+###
+POST http://localhost:5000/users
+Content-Type: application/json
 
+{
+    "email": "jean@gmail.com",
+    "password": "1234"
+}
+###
+POST http://localhost:5000/users/login
+Content-Type: application/json
+
+{
+    "email": "jean@gmail.com",
+    "password": "1234"
+}
+###
+DELETE http://localhost:5000/users/1
+###
+PUT http://localhost:5000/users/1
+Content-Type: application/json
+
+{
+    "email": "ok@gmail.com"    
+}
+###
+DELETE http://localhost:5000/users/
+###
+
+
+
+
+
+
+# PLAYLIST ROUTES
+GET http://localhost:5000/playlists
+###
+POST http://localhost:5000/playlists
+Content-Type: application/json
+
+{
+    "title": "Vive les croquilles"
+}
+###
+DELETE http://localhost:5000/playlists/6
+###
+
+
+
+
+
+
+# CAPSULE ROUTES
+GET http://localhost:5000/capsules
 ###
 POST http://localhost:5000/capsules
 Content-Type: application/json
@@ -8,77 +63,10 @@ Content-Type: application/json
     "audio_path": "mp3",
     "audio_title": "Pascal"
 }
-
-###
-GET http://localhost:5000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTYyMzg1MTM2NH0.UIHturC6yyCTSJJP3srYbdKIhLw7zAn9i_zysCi7C1I
-
-###
-POST http://localhost:5000/users
-Content-Type: application/json
-
-{
-    "email": "jean@gmail.com",
-    "password": "1234"
-}
-
-###
-POST http://localhost:5000/users
-Content-Type: application/json
-
-{
-    "email": "ok@gmail.com",
-    "password": "12345"
-}
-
-###
-POST http://localhost:5000/users/login
-Content-Type: application/json
-
-{
-    "email": "jean@gmail.com",
-    "password": "1234"
-}
-
-###
-POST http://localhost:5000/users/login
-Content-Type: application/json
-
-{
-    "email": "ok@gmail.com",
-    "password": "12345"
-}
-
-###
-DELETE http://localhost:5000/users/1
-
-###
-DELETE http://localhost:5000/users/
-
 ###
 DELETE http://localhost:5000/capsules/1
-
 ###
 DELETE http://localhost:5000/capsules/
-
-###
-GET http://localhost:5000/playlists
-
-###
-
-POST http://localhost:5000/playlists
-Content-Type: application/json
-
-{
-    "title": "Vive les croquilles"
-
-PUT http://localhost:5000/users/1
-Content-Type: application/json
-
-{
-    "email": "ok@gmail.com"    
-}
-
 ###
 PUT http://localhost:5000/capsules/37
 Content-Type: application/json
@@ -87,3 +75,5 @@ Content-Type: application/json
     "audio_path": "mp57",
     "audio_title": "Tuto"
 }
+###
+
