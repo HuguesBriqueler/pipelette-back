@@ -32,7 +32,6 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:5000/users/login
 Content-Type: application/json
 
@@ -42,7 +41,6 @@ Content-Type: application/json
 }
 
 ###
-
 POST http://localhost:5000/users/login
 Content-Type: application/json
 
@@ -73,4 +71,19 @@ Content-Type: application/json
 
 {
     "title": "Vive les croquilles"
+
+PUT http://localhost:5000/users/1
+Content-Type: application/json
+
+{
+    "email": "ok@gmail.com"    
+}
+
+###
+PUT http://localhost:5000/capsules/37
+Content-Type: application/json
+
+{
+    "audio_path": "mp57",
+    "audio_title": "Tuto"
 }
