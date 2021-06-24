@@ -6,7 +6,7 @@ Content-Type: application/json
 
 {
     "audio_path": "mp3",
-    "audio_title": "anniversaire"
+    "audio_title": "Pascal"
 }
 
 ###
@@ -50,18 +50,28 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5000/users/3
+DELETE http://localhost:5000/users/1
 
 ###
 DELETE http://localhost:5000/users/
 
 ###
-DELETE http://localhost:5000/capsules/3
+DELETE http://localhost:5000/capsules/1
 
 ###
 DELETE http://localhost:5000/capsules/
 
 ###
+GET http://localhost:5000/playlists
+
+###
+
+POST http://localhost:5000/playlists
+Content-Type: application/json
+
+{
+    "title": "Vive les croquilles"
+
 PUT http://localhost:5000/users/1
 Content-Type: application/json
 

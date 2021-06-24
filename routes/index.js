@@ -17,4 +17,7 @@ const uploadRoutes = require('./upload');
 routes.use('/upload', uploadRoutes);
 routes.use('/uploads', express.static('uploads'));
 
+const playlistRoutes = require('./playlist');
+routes.use('/playlists', playlistRoutes);
+
 module.exports = routes;
