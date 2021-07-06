@@ -24,7 +24,7 @@ const multer = require('multer');
 
 const upload = multer({ dest: __dirname + '/public/uploads/' });
 
-routes.post('/toto', upload.single('blob'), (req, res) => {
+routes.post('/capsule_upload', upload.single('blob'), (req, res) => {
   console.log('Toto', req);
   console.log(req.file);
   res.send("Welcome to Express");
