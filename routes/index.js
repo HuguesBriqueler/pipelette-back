@@ -20,4 +20,14 @@ routes.use('/uploads', express.static('uploads'));
 const playlistRoutes = require('./playlist');
 routes.use('/playlists', playlistRoutes);
 
+const multer = require('multer');
+
+const upload = multer({ dest: __dirname + '/public/uploads/' });
+
+routes.post('/capsule_upload', upload.single('blob'), (req, res) => {
+  console.log('Toto', req);
+  console.log(req.file);
+  res.send("Welcome to Express");
+});
+
 module.exports = routes;
