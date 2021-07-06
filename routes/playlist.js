@@ -13,6 +13,17 @@ playlistRoutes.get("/", (req, res) => {
   });
 });
 
+playlistRoutes.get("/:id/capsules", (req, res) => {
+  db.query("SELECT * from capsule JOIN playlistCapsule ON capsule.id = playlistCapsule.capsule_id WHERE playlist_id = ?", [req.params.id], (err, results) => {
+    if (err) {
+      console.log(err);
+      res.status(500);
+    } else {
+      res.status(200).json(results);
+    }
+  });
+});
+
 // TEST POST
 playlistRoutes.post("/", (req, res) => {
   const { title } = req.body;
