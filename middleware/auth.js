@@ -37,7 +37,7 @@ const authenticationToken = (req, res, next) => {
     const token = authorization.split(' ')[1];
     try {
         const decoded = jwt.verify(token, process.env.SECRET_TOKEN);
-        req.tokenpPayload = decoded;
+        req.tokenPayload = decoded;
         console.log('Access authorized');
         next();
     }

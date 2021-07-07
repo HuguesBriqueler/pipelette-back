@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('express').Router();
 const db = require("../db-config");
+const { authenticationToken } = require('../middleware/auth');
 
 // define the index route
 routes.get('/', (req, res) => {
@@ -27,25 +28,22 @@ const upload = multer({ dest: __dirname + '/public/uploads/' });
 
 const fs = require('fs');
 
-routes.post('/capsule_upload', upload.single('blob'), (req, res) => {
-  console.log('Toto', req);
-  console.log(req.file);
-  fs.renameSync(req.file.path, `routes/public/uploads/${req.file.filename}.wav`);
-
-  res.send("Welcome to Express");
+routes.post('/capsule_upload', authenticationToken, upload.single('blob'), (req, res) => {
+  fs.renameSync(req.file.path, `public/uploads/${req.file.filename}.wav`);
 
   const capsule = {
     audio_path: req.file.path,
     audio_title: req.file.filename,
+    user_id: req.tokenPayload.sub,
   }
 
   db.query(
-    "INSERT INTO capsule (audio_path, audio_title) VALUES (?, ?)",
-    [capsule.audio_path, capsule.audio_title],
+    "INSERT INTO capsule (audio_path, audio_title, user_id) VALUES (?, ?, ?)",
+    [capsule.audio_path, capsule.audio_title, capsule.user_id],
     (err, results) => {
       if (err) {
         console.log(err);
-        res.status(500);
+        res.sendStatus(500);
       } else {
         res.status(201).json({ ...capsule, user_id: results.insertId });
       }
