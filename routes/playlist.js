@@ -27,9 +27,11 @@ playlistRoutes.get("/:id/capsules", (req, res) => {
 // TEST POST
 playlistRoutes.post("/", (req, res) => {
   const { title } = req.body;
+  const { user_id } = req.body;
+
   db.query(
-    "INSERT INTO playlist(title) VALUES (?)",
-    [title],
+    "INSERT INTO playlist(title, user_id) VALUES (?, ?)",
+    [title, user_id],
     (err, results) => {
       if (err) {
         console.log(err);

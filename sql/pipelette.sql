@@ -41,4 +41,7 @@ CREATE TABLE playlistCapsule (
 INSERT INTO user (id, email, password) VALUES ("1", "toto@gmail.com", "1234");
 INSERT INTO playlist (id, title, user_id) VALUES ("1", "Éte 2020", "1");
 INSERT INTO capsule (id, audio_path, audio_title, user_id) VALUES ("1", "/path", "anniversaire", "1");
+INSERT INTO capsule (id, audio_path, audio_title, user_id) VALUES ("2", "/path2", "anniversaire 2", "1");
+
 INSERT INTO playlistCapsule (id, playlist_id, capsule_id) VALUES ("1", "1", "1");
+INSERT INTO playlistCapsule (id, playlist_id, capsule_id) VALUES ("2", "1", "2");
