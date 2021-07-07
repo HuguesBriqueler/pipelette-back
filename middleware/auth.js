@@ -18,7 +18,8 @@ const hashPassword = async (req, res, next) => {
 const verifyPassword = async (req, res, next) => {
   if(await argon2.verify(req.db.password, req.body.password)) {
       const token = jwt.sign({sub: req.db.id}, process.env.SECRET_TOKEN);
-    res.status(200).json({token});
+      const userId = req.db.id;
+    res.status(200).json({token, userId});
     console.log('Password matched !');
     next();
   }
