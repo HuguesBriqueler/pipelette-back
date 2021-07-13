@@ -13,6 +13,7 @@ playlistRoutes.get("/", (req, res) => {
   });
 });
 
+// GET CAPSULES OF THE CURRENT PLAYLIST
 playlistRoutes.get("/:id/capsules", (req, res) => {
   db.query("SELECT * from capsule JOIN playlistCapsule ON capsule.id = playlistCapsule.capsule_id WHERE playlist_id = ?", [req.params.id], (err, results) => {
     if (err) {
