@@ -57,6 +57,16 @@ routes.post('/capsule_upload', authenticationToken, upload.single('blob'), (req,
               }
             }
           );
+        } else {
+          db.query(
+            "INSERT INTO playlistCapsule (playlist_id, capsule_id) VALUES (1, ?)",
+          [ result.insertId],
+            (err) => {
+              if (err) {
+                console.log(err);
+              }
+            }
+          );
         }
       }
     }
