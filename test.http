@@ -38,7 +38,7 @@ DELETE http://localhost:5000/users/
 # PLAYLIST ROUTES
 GET http://localhost:5000/playlists
 ###
-GET http://localhost:5000/playlists/1/capsules
+GET http://localhost:5000/playlists/4/capsules
 ###
 POST http://localhost:5000/playlists
 Content-Type: application/json
