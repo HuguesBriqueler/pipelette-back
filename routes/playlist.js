@@ -1,9 +1,10 @@
 const db = require("../db-config");
 const playlistRoutes = require("express").Router();
+const { authenticationToken } = require('../middleware/auth');
 
 // TEST GET
-playlistRoutes.get("/", (req, res) => {
-  db.query("SELECT * from playlist", (err, results) => {
+playlistRoutes.get("/", authenticationToken, (req, res) => {
+  db.query("SELECT * from playlist WHERE user_id = ?", [req.tokenPayload.sub], (err, results) => {
     if (err) {
       console.log(err);
       res.status(500);
@@ -14,8 +15,12 @@ playlistRoutes.get("/", (req, res) => {
 });
 
 // GET CAPSULES OF THE CURRENT PLAYLIST
-playlistRoutes.get("/:id/capsules", (req, res) => {
-  db.query("SELECT * from capsule JOIN playlistCapsule ON capsule.id = playlistCapsule.capsule_id WHERE playlist_id = ?", [req.params.id], (err, results) => {
+playlistRoutes.get("/:id/capsules", authenticationToken, (req, res) => {
+  let playlistClause = " playlist_id = ?";
+  if (parseInt(req.params.id, 10) === 0) {
+    playlistClause = " playlist_id IS NULL";
+  }
+  db.query("SELECT * from capsule LEFT JOIN playlistCapsule ON capsule.id = playlistCapsule.capsule_id WHERE user_id = ? AND" + playlistClause, [req.tokenPayload.sub, req.params.id], (err, results) => {
     if (err) {
       console.log(err);
       res.status(500);
